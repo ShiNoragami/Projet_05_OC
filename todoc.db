@@ -1,0 +1,19 @@
+--
+-- Fichier généré par SQLiteStudio v3.2.1 sur ven. sept. 25 13:06:21 2020
+--
+-- Encodage texte utilisé : System
+--
+PRAGMA foreign_keys = off;
+BEGIN TRANSACTION;
+
+-- Table : project
+CREATE TABLE project (projectId INTEGER PRIMARY KEY DESC NOT NULL, name STRING NOT NULL, color INTEGER NOT NULL);
+INSERT INTO project (projectId, name, color) VALUES (1, 'Projet Tartampion', '0xFFEADAD1');
+INSERT INTO project (projectId, name, color) VALUES (2, 'Projet Lucidia', '0xFFB4CDBA');
+INSERT INTO project (projectId, name, color) VALUES (3, 'Projet Circus', '0xFFA3CED2');
+
+-- Table : task
+CREATE TABLE task (projectId INTEGER NOT NULL REFERENCES project (projectId), taskId INTEGER PRIMARY KEY NOT NULL, name STRING NOT NULL, date DATE NOT NULL);
+
+COMMIT TRANSACTION;
+PRAGMA foreign_keys = on;

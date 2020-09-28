@@ -11,17 +11,17 @@ import com.cleanup.todoc.model.Project;
 import java.util.List;
 
 @Dao
-public class ProjectDAO {
+public interface ProjectDAO {
 
     @Query("SELECT * FROM Project")
-    LiveData<List<Project>> getAllProjects();
+    public LiveData<List<Project>> getAllProjects();
 
     @Query("SELECT * FROM Project WHERE id = :projectId")
-    LiveData<Project> getProject(long projectId);
+    public LiveData<Project> getProject(long projectId);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    long insertProject(Project project);
+    public long insertProject(Project project);
 
     @Insert
-    void insertAll(Project... projects);
+    public void insertAll(Project... projects);
 }
